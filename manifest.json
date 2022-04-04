@@ -1,0 +1,24 @@
+{
+    "name": "SeekNet",
+    "description": "Make a connection!",
+    "version": "0.0.0.1",
+    "manifest_version": 3,
+    "permissions": ["storage", "activeTab", "scripting", "management"],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "/images/tree16.png",
+        "32": "/images/tree32.png",
+        "48": "/images/tree48.png",
+        "128": "/images/tree128.png"
+      }
+    },
+    
+    "icons": {
+      "16": "/images/tree16.png",
+      "32": "/images/tree32.png",
+      "48": "/images/tree48.png",
+      "128": "/images/tree128.png"
+    }
+  
+  }
