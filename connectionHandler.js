@@ -1,6 +1,6 @@
 // Change for local development
-//const CONNECTION = "http://127.0.0.1:5000/"; // local development
-const CONNECTION = "http://seeknet.eastus.cloudapp.azure.com:5000/"; // in production
+const CONNECTION = "http://127.0.0.1:5000/"; // local development
+// const CONNECTION = "http://seeknet.eastus.cloudapp.azure.com:5000/"; // in production
 
 var HttpClient = function() {
     this.get = function(aUrl, aCallback) {
