@@ -5,6 +5,10 @@ SeekNet is a way to create and discover connections among webpages. Opening the 
 Currently, all connections are user-created. To add a connection to a webpage, open the extension on the webpage and add the connection URL and description. Then click "Create Connection". Your connection should then appear in the list of connections for that current webpage.
 
 In essence, SeekNet helps you discover where to go next.
+
+## Building the project:
+1. Run Build to generate a packaged extension which can be loaded into chrome
+> npm run build
 ## How to add
 1. Clone the repository
 2. In the chrome browser, navigate to chrome://extensions/
