@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import '.././App.css';
 import ManualConnection from './ManualConnection';
-import SearchSeekNet from './SearchSeekNet';
 import { goTo } from 'react-chrome-extension-router';
 import { Button, Form, Card } from 'react-bootstrap';
 
 function Home(props: any) {
   const [seeknetSearchResults, setSeeknetSearchResults] = useState([]);
   const [urlSearchResults, setUrlSearchResults] = useState([]);
+  const [ddgSearchResults, setDDGSearchResults] = useState([]);
   const [query, setQuery] = useState('');
   const currentUrl = props.url;
 
@@ -35,7 +35,18 @@ function Home(props: any) {
     fetch('http://127.0.0.1:5000/search', requestOptions)
       .then(response => response.json())
       .then(data => setSeeknetSearchResults(data['results']));
+
+      const requestDDGOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+      };
+  
+      fetch('http://127.0.0.1:5000/ddg?query='+ query, requestDDGOptions)
+        .then(response => response.json())
+        .then(data => setDDGSearchResults(data['results']));
+
   };
+
 
   const handleLinkClick = async(e: any) => {
     console.log('Clicked: ', e);
@@ -56,7 +67,8 @@ function Home(props: any) {
   return (
     <div className="App">
       <header className="App-header">
-        <h3 style={{color:"white", fontWeight: "bold"}}>SeekNet</h3>
+        <h3 style={{color:"white", fontStyle: "italic"}}>SeekNet</h3>
+        <br />
         <div>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicQuery">
@@ -72,11 +84,27 @@ function Home(props: any) {
         <div id="SearchResults" className="SearchResults">
           {seeknetSearchResults.length > 0 &&
             <Card>
-              <Card.Header style={{color:"black", fontWeight: "bold"}}>Seeknet results</Card.Header>
+              <Card.Header style={{color:"black", fontWeight: "bold"}}>Seeknet Results</Card.Header>
               <Card.Body>
                 {seeknetSearchResults.map((result: any, index: number) => (
                   <div>
                     <Card.Link href={result.url}  id={result.id} onClick={handleLinkClick}>{result.text}</Card.Link>
+                    <br />
+                  </div>
+                ))}
+              </Card.Body>
+            </Card>
+          }
+        </div>
+        <br />
+        <div id="SearchResults" className="SearchResults">
+          {ddgSearchResults.length > 0 &&
+            <Card>
+              <Card.Header style={{color:"black", fontWeight: "bold"}}>DuckDuckGo Results</Card.Header>
+              <Card.Body>
+                {ddgSearchResults.map((result: any, index: number) => (
+                  <div>
+                    <Card.Link href={result.url} onClick={handleLinkClick}>{result.title}</Card.Link>
                     <br />
                   </div>
                 ))}
@@ -102,7 +130,6 @@ function Home(props: any) {
               </Card.Body>
             </Card>
           }
-
         </div>
       </header>
     </div>
