@@ -16,9 +16,15 @@ function Home(props: any) {
       method: 'GET',
       headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
     };
+    const consolelog = (data: any) => {
+      console.log(data);
+      return data;
+    }
 
+    // fetching the connections already made for the current url
     fetch('http://127.0.0.1:5000/?url=' + currentUrl, requestOptions)
       .then(response => response.json())
+      .then(data => consolelog(data))
       .then(data => setUrlSearchResults(data['payload']['connections']));
       console.log(currentUrl);
   }, [setUrlSearchResults, currentUrl]);
@@ -32,6 +38,7 @@ function Home(props: any) {
       body: JSON.stringify({ query: query, url: props.url })
     };
 
+    // fetching the search results from seeknet
     fetch('http://127.0.0.1:5000/search', requestOptions)
       .then(response => response.json())
       .then(data => setSeeknetSearchResults(data['results']));
@@ -41,9 +48,10 @@ function Home(props: any) {
         headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
       };
   
-      fetch('http://127.0.0.1:5000/ddg?query='+ query, requestDDGOptions)
-        .then(response => response.json())
-        .then(data => setDDGSearchResults(data['results']));
+    // fetching the search results from DuckDuckGo
+    fetch('http://127.0.0.1:5000/ddg?query='+ query, requestDDGOptions)
+      .then(response => response.json())
+      .then(data => setDDGSearchResults(data['results']));
 
   };
 
@@ -57,6 +65,7 @@ function Home(props: any) {
       body: JSON.stringify({ src_url: currentUrl, tgt_url: e.target.href, search_text: query})
     };
 
+    // storing the url's which the user has clicked on
     await fetch('http://127.0.0.1:5000/log_clicks', requestOptions)
       .then(response => response.json())
       .then(data => console.log(data));
@@ -81,6 +90,7 @@ function Home(props: any) {
           </Form>
         </div>
         <br />
+
         <div id="SearchResults" className="SearchResults">
           {seeknetSearchResults.length > 0 &&
             <Card>
@@ -97,6 +107,7 @@ function Home(props: any) {
           }
         </div>
         <br />
+
         <div id="SearchResults" className="SearchResults">
           {ddgSearchResults.length > 0 &&
             <Card>
@@ -113,9 +124,10 @@ function Home(props: any) {
           }
         </div>
         <br />
+
         <Button variant="info" className="AppButton" onClick={() => goTo(ManualConnection, { url: props.url })}>Manual Connection</Button>
         <br />
-        {/* <Button variant="info" className="AppButton" onClick={() => goTo(SearchSeekNet, {url: props.url})}>Search Seeknet</Button> */}
+        
         <div id="urlConnections" className="urlConnections">
           {urlSearchResults.length > 0 &&
             <Card>

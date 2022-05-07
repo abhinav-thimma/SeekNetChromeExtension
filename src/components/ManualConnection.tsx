@@ -17,6 +17,7 @@ function ManualConnection(props: any) {
       body: JSON.stringify({ text: text, src_url: props.url, tgt_url: url })
     };
     
+    // creating a manual connection between the current URL and the one entered by the user
     fetch('http://127.0.0.1:5000/connect', requestOptions)
       .then(response => response.json())
       .then(data => setMessage('Successfully connected'));
