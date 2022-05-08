@@ -95,13 +95,15 @@ function Home(props: any) {
           {seeknetSearchResults.length > 0 &&
             <Card>
               <Card.Header style={{color:"black", fontWeight: "bold"}}>Seeknet Results</Card.Header>
-              <Card.Body>
+              <Card.Body style = {{textAlign: "left"}}>
+                <ul>
                 {seeknetSearchResults.map((result: any, index: number) => (
                   <div>
-                    <Card.Link href={result.url}  id={result.id} onClick={handleLinkClick}>{result.text}</Card.Link>
+                    <li><Card.Link href={result.url}  id={result.id} onClick={handleLinkClick}>{result.text}</Card.Link></li>
                     <br />
                   </div>
                 ))}
+                </ul>
               </Card.Body>
             </Card>
           }
@@ -112,13 +114,15 @@ function Home(props: any) {
           {ddgSearchResults.length > 0 &&
             <Card>
               <Card.Header style={{color:"black", fontWeight: "bold"}}>DuckDuckGo Results</Card.Header>
-              <Card.Body>
+              <Card.Body style = {{textAlign: "left"}}>
+                <ul>
                 {ddgSearchResults.map((result: any, index: number) => (
                   <div>
-                    <Card.Link href={result.url} onClick={handleLinkClick}>{result.title}</Card.Link>
+                    <li><Card.Link href={result.url} onClick={handleLinkClick}>{result.title}</Card.Link></li>
                     <br />
                   </div>
                 ))}
+                </ul>
               </Card.Body>
             </Card>
           }
@@ -132,13 +136,15 @@ function Home(props: any) {
           {urlSearchResults.length > 0 &&
             <Card>
               <Card.Header style={{color:"black", fontWeight: "bold"}}>Connection with current URL as source</Card.Header>
-              <Card.Body>
+              <Card.Body style = {{textAlign: "left"}}>
+                <ul>
                 {urlSearchResults.map((result: any, index: number) => (
                   <div>
-                    <Card.Link href={result.tgt_url} id={result.id} onClick={handleLinkClick}>{result.text}</Card.Link>
+                    <li><Card.Link href={result.tgt_url} id={result.id} onClick={handleLinkClick}>{result.text}</Card.Link></li>
                     <br />
                   </div>
                 ))}
+                </ul>
               </Card.Body>
             </Card>
           }
