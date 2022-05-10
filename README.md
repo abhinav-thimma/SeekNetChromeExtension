@@ -7,6 +7,8 @@
 ## Steps to build and run the project:
 1. Run the command:
 > npm install
+2. Install React-script
+> npm i react-scripts
 2. Run Build to generate a packaged extension which can be loaded into chrome
 > npm run build
 ## How to add the extension to chromium based browsers
