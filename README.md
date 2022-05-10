@@ -1,19 +1,19 @@
 # SeekNet - Chrome Extension Frontend
-## What is this?
-SeekNet is a way to create and discover connections among webpages. Opening the extension on a webpage displays a list of created outgoing connections with their respective descriptions. Clicking a connection will open a new tab at the connected URL. 
+## Features:
+1. Allows users to search in SeekNet connections and DuckDuckGo.
+2. Helps users create connections between current tab URL and a new webpage.
+3. Shows previously connected URL's to the current webpage.
 
-Currently, all connections are user-created. To add a connection to a webpage, open the extension on the webpage and add the connection URL and description. Then click "Create Connection". Your connection should then appear in the list of connections for that current webpage.
-
-In essence, SeekNet helps you discover where to go next.
-
-## Building the project:
-1. Run Build to generate a packaged extension which can be loaded into chrome
+## Steps to build and run the project:
+1. Run the command:
+> npm install
+2. Run Build to generate a packaged extension which can be loaded into chrome
 > npm run build
-## How to add
+## How to add the extension to chromium based browsers
 1. Clone the repository
 2. In the chrome browser, navigate to chrome://extensions/
 3. Toggle on "Developer Mode" (at the top right of the screen)
 4. Click "Load Unpacked", and select the cloned repository
 5. Click the "Extensions" icon in the Chrome toolbar (puzzle at top right of toolbar)
-6. Pin "SeekNet"
+6. Pin "SeekNetExtension"
 7. Start browsing and making connections!
