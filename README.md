@@ -15,7 +15,7 @@
 1. Clone the repository
 2. In the chrome browser, navigate to chrome://extensions/
 3. Toggle on "Developer Mode" (at the top right of the screen)
-4. Click "Load Unpacked", and select the cloned repository
+4. Click "Load Unpacked", and select the /build folder (created after running `npm run build`)
 5. Click the "Extensions" icon in the Chrome toolbar (puzzle at top right of toolbar)
 6. Pin "SeekNetExtension"
 7. Start browsing and making connections!
