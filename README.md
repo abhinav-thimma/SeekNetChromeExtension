@@ -1,9 +1,10 @@
 # SeekNet - Chrome Extension Frontend
 
 ## Features:
-1. Allows users to search in SeekNet connections and DuckDuckGo.
+1. Allows users to search in SeekNet connections using BM25 and DuckDuckGo search engine.
 2. Helps users create connections between current tab URL and a new webpage.
-3. Shows previously connected URL's to the current webpage.
+3. Creating implicit connections defined by User clicks.
+4. Shows previously connected URL's to the current webpage.
 
 ## Steps to build and run the project:
 1. Run the command:
